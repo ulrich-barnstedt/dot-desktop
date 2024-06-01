@@ -1,0 +1,28 @@
+(include "./top.yuck")
+(include "./bottom.yuck")
+
+(defwidget content []
+    (box
+        :spacing 30 
+        :space-evenly false
+        :class "content"
+        :orientation "v"
+        (top)
+        (revealer
+            :transition "slidedown"
+            :reveal all-expanded
+            (bottom)
+        )
+    )
+)
+
+(defwindow main
+    :monitor 1
+    :geometry (geometry :anchor "center")
+    :stacking "bg"
+    :wm-ignore false
+    :windowtype "desktop"
+    :class "window"
+    :focusable true
+    (content)
+)

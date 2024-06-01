@@ -1,0 +1,11 @@
+(defwidget launcher [picture command class]
+    (button
+        :onclick command
+        (image
+            :class "${class}"
+            :image-height 64
+            :image-width 64
+            :path picture
+        )
+    )
+)

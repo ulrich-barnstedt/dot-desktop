@@ -1,0 +1,41 @@
+(defwidget spotify-active []
+    (box
+        "active"
+    )
+)
+
+(defwidget spotify-inactive []
+    (box
+        :space-evenly false
+        :spacing 40
+        :class "pad-xl"
+        (image
+            :path "/home/ulrich/.config/eww/images/spotify.png"
+            :image-height 100
+        )
+        (label
+            :text "Inactive"
+            :class "red"
+        )
+    )
+)
+
+(defpoll player-list :interval "5s" `playerctl -l`)
+(defwidget spotify []
+    (box
+        :class "widget-dark"
+        :valign "start"
+        :space-evenly false
+        (revealer
+            :transition "slideright"
+            :reveal {matches(player-list, "spotify")}
+            (spotify-active)
+        )
+        (revealer
+            :transition "slideleft"
+            :reveal {!matches(player-list, "spotify")}
+            (spotify-inactive)
+        )
+    )
+    ; (literal :content {matches(player-list, "spotify") ? "(spotify-inactive)" : "(spotify-inactive)"})
+)

@@ -1,0 +1,170 @@
+$bg: #282c34;
+$bg_light: #434a57;
+$red: #e06c75;
+$green: #98c379;
+$yellow: #e5c07b;
+$blue: #61afef;
+$purple: #c678dd;
+$cyan: #56b6c2;
+$fg_dark: #abb2bf;
+$fg: #ffffff;
+
+* { all: unset; }
+* {   
+    font-family: "JetBrains Mono Nerd Font", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+    color: $fg;
+}
+
+.content {
+    margin: 30px;
+}
+
+.widget {
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 15px 5px #111111;
+}
+
+.widget-dark {
+    @extend .widget;
+    background-color: $bg;
+    border: 2px solid $bg_light;
+}
+
+.widget-light {
+    @extend .widget;
+    background-color: gray;
+    border: 2px solid lighten(gray, 15%);
+}
+
+
+// ----------------------------------------
+
+.pad-top {
+    padding-top: 30px;
+}
+
+.pad-bottom {
+    padding-bottom: 30px;
+}
+
+.pad-bottom-sm {
+    padding-bottom: 15px;
+}
+
+.pad-bottom-xsm {
+    padding-bottom: 8px;
+}
+
+.pad-top {
+    padding-top: 30px;
+}
+
+.pad-top-sm {
+    padding-top: 15px;
+}
+
+.pad-xl {
+    padding: 50px;
+}
+
+.larger {
+    font-size: larger;
+}
+
+
+// ----------------------------------------
+
+.red {
+    color: $red;
+}
+
+.blue {
+    color: $blue;
+}
+
+.green {
+    color: $green;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+.purple {
+    color: $purple;
+}
+
+.cyan {
+    color: $cyan;
+}
+
+
+// ----------------------------------------
+
+.launcher {
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 0 15px 5px #111111;
+}
+
+@mixin launcher-color($color) {
+    @extend .launcher;
+    background-color: $color;
+    border: 2px solid lighten($color, 10%);
+}
+
+.launcher-shutdown {
+    @include launcher-color($red);
+}
+.launcher-restart {
+    @include launcher-color($green);
+}
+.launcher-logout {
+    @include launcher-color($cyan);
+}
+.launcher-sleep {
+    @include launcher-color($yellow);
+}
+.launcher-update {
+    @include launcher-color(gray);
+}
+
+
+// ---------------------------------------- 
+
+.cpu_bar, .mem_bar, .storage_bar, .bat_bar, .temp_bar, scale trough {
+	all: unset;
+	background-color: $bg_light;
+	border-radius: 5px;
+	min-height: 10px;
+	min-width: 240px;
+}
+
+.cpu_bar, .mem_bar, .storage_bar, .bat_bar, .temp_bar, scale trough highlight {
+	all: unset;
+	border-radius: 10px;
+}
+
+.cpu_bar scale trough highlight {
+	background-color: $yellow;
+}
+
+.mem_bar scale trough highlight {
+	background-color: $blue;
+}
+
+.storage_bar scale trough highlight {
+	background-color: $purple;
+}
+
+.bat_bar scale trough highlight {
+	background-color: $green;
+}
+
+.temp_bar scale trough highlight {
+	background-color: $red;
+}
