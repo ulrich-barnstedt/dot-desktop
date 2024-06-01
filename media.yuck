@@ -1,10 +1,4 @@
-; (defpoll player-icon :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata mpris:artUrl`)
-; (defpoll player-title :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata xesam:title`)
-; (defpoll player-artist :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata xesam:artist`)
-; (defpoll player-album :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata xesam:album`)
-; (defpoll player-status :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify status`)
-
-(deflisten media-info :initial "[]" `python3 scripts/player-service.py`)
+(deflisten media-info :initial "[]" `python3 scripts/player-service2.py`)
 (defwidget media-list []
     (box
         :space-evenly false
