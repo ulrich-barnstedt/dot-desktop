@@ -2,7 +2,7 @@
     (button
         :onclick command
         (image
-            :class "${class}"
+            :class class
             :image-height 64
             :image-width 64
             :path picture

@@ -1,12 +1,6 @@
 (include "./launcher.yuck")
 (include "./weather.yuck")
 
-(defpoll os-version :interval "100m" :run-while false `lsb_release -ds`)
-(defpoll username :interval "100m" :run-while false `whoami`)
-(defpoll hostname :interval "100m" :run-while false `hostname`)
-(defpoll kernel-version :interval "100m" :run-while false `uname -r | cut -d "-" -f 1`)
-(defpoll uptime :interval "1m" `echo "scale=2; $(awk '{print $1}' /proc/uptime) / 3600" | bc`)
-
 (defvar all-expanded true)
 (defwidget penguin []
     (button
@@ -56,6 +50,11 @@
 )
 
 (defvar sysinfo-expanded true)
+(defpoll os-version :interval "100m" :run-while false `lsb_release -ds`)
+(defpoll username :interval "100m" :run-while false `whoami`)
+(defpoll hostname :interval "100m" :run-while false `hostname`)
+(defpoll kernel-version :interval "100m" :run-while false `uname -r | cut -d "-" -f 1`)
+(defpoll uptime :interval "1m" `echo "scale=2; $(awk '{print $1}' /proc/uptime) / 3600" | bc`)
 (defwidget system-info []
     (box
         :class "widget-dark"
@@ -167,7 +166,7 @@
             )
             (label
                 :halign "end"
-                :text '${round(EWW_RAM["available_mem"] / 1073741824, 1)} / ${round(EWW_RAM["total_mem"] / 1073741824, 1)} GB'
+                :text '${round(EWW_RAM["used_mem"] / 1073741824, 1)} / ${round(EWW_RAM["total_mem"] / 1073741824, 1)} GB'
                 :class "blue"
             )
         )
@@ -240,7 +239,7 @@
         (box
             :class "temp_bar"
             (scale
-                :min 0
+                :min 20
                 :max 100
                 :value {EWW_TEMPS["CORETEMP_PACKAGE_ID_0"]}
                 :active false
@@ -264,7 +263,11 @@
             :space-evenly false
             :spacing 30
             (image
-                :path {weather-info["current"]["is_day"] == 1 ? "/home/ulrich/.config/eww/icons/day.png" : "/home/ulrich/.config/eww/icons/night.png"}
+                :path {
+                    weather-info["current"]["is_day"] == 1 ? 
+                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/day_cloudy.png" : "/home/ulrich/.config/eww/icons/day.png" :
+                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/night_cloudy.png" : "/home/ulrich/.config/eww/icons/night.png" 
+                }
                 :image-height 64
                 :image-width 64
             )
