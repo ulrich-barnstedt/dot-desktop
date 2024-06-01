@@ -1,5 +1,5 @@
 (include "./launcher.yuck")
-(include "./spotify.yuck")
+(include "./media.yuck")
 
 (defwidget powermenu []
     (box
@@ -43,6 +43,6 @@
         :space-evenly false
         :spacing 30 
         (powermenu)
-        (spotify)
+        (media-list)
     )
 )

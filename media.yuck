@@ -1,0 +1,75 @@
+; (defpoll player-icon :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata mpris:artUrl`)
+; (defpoll player-title :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata xesam:title`)
+; (defpoll player-artist :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata xesam:artist`)
+; (defpoll player-album :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify metadata xesam:album`)
+; (defpoll player-status :interval "5s" :run-while {matches(player-list, "spotify")} `playerctl -p spotify status`)
+
+(deflisten media-info :initial "[]" `python3 scripts/player-service.py`)
+(defwidget media-list []
+    (box
+        :space-evenly false
+        :spacing 30
+        (box
+            (for player in media-info 
+                (box
+                    :space-evenly false
+                    :orientation "v"
+                    {player.name}
+                    {player.is_playing}
+                )
+            )
+        )
+        ; (box
+        ;     :style 'background-image: url("${player-icon}")'
+        ;     :class "image-96"
+        ;     :valign "start"
+        ;     :height 256
+        ;     :width 256
+        ; )
+        ; (box
+        ;     :space-evenly false
+        ;     :orientation "v"
+        ;     player-title
+        ;     player-artist
+        ;     player-album 
+        ;     player-status
+        ; )
+    )
+)
+
+; (defwidget media-inactive []
+;     (box
+;         :space-evenly false
+;         :spacing 40
+;         :class "pad-xl"
+;         (image
+;             :path "/home/ulrich/.config/eww/images/spotify.png"
+;             :image-height 100
+;         )
+;         (label
+;             :text "Inactive"
+;             :class "red"
+;         )
+;     )
+; )
+
+
+; ; https://medium.com/@rocchokcoco/how-to-extract-image-theme-color-by-css-eb0d278c14d
+; (defpoll player-list :interval "5s" :initial "" `playerctl -l`)
+; (defwidget media []
+;     (box
+;         :class "widget-dark"
+;         :valign "start"
+;         :space-evenly false
+;         (revealer
+;             :transition "slideright"
+;             :reveal {matches(player-list, "spotify")}
+;             (media-active)
+;         )
+;         (revealer
+;             :transition "slideleft"
+;             :reveal {!matches(player-list, "spotify")}
+;             (media-inactive)
+;         )
+;     )
+; )
