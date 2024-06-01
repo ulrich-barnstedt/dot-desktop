@@ -40,9 +40,12 @@ $fg: #ffffff;
     border: 2px solid lighten(gray, 15%);
 }
 
-.image-96 {
+.image-player {
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
+    min-height: 160px;
+    min-width: 160px;
 }
 
 // ----------------------------------------

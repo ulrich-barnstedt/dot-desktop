@@ -1,9 +1,11 @@
 import json
 import math
-from io import BytesIO
+import os.path
+import PIL
 import gi
 import requests
 from PIL import Image
+from io import BytesIO
 
 gi.require_version('Playerctl', '2.0')
 from gi.repository import Playerctl, GLib
@@ -14,7 +16,7 @@ default_metadata = {
     "title": "<No title>",
     "artist": "<No artist>",
     "album": "<No album>",
-    "image": "https://placehold.co/256x256",
+    "image": "https://placehold.co/256x265",
     "color": "#777777",
     "color_border": "#999999"
 }
@@ -31,7 +33,9 @@ def send_update():
             {
                 "name": player.props.player_name,
                 "is_playing": player.props.playback_status.value_nick == "Playing",
-                "position": round(player.props.position / player.props.metadata["mpris:length"], 2)
+                "position":
+                    round(player.props.position / player.props.metadata["mpris:length"], 2)
+                    if player.props.metadata["mpris:length"] != 0 else 0
             } |
             metadata_index.get(player.props.player_name, default_metadata)
         )
@@ -59,7 +63,6 @@ def on_status(player, status, manager):
     if not interval_func_running:
         for player in manager.props.players:
             if player.props.playback_status.value_nick == "Playing":
-                print("starting interval")
                 GLib.timeout_add_seconds(
                     2,
                     interval_function
@@ -80,23 +83,29 @@ def on_metadata(player, metadata, manager):
     }
 
     if mapped_meta["image"] != "":
+        loaded_image = True
         if mapped_meta["image"].startswith("file://"):
-            img = Image.open(mapped_meta["image"].replace("file://", ""))
+            path = mapped_meta["image"].replace("file://", "")
+            if os.path.isfile(path):
+                img = Image.open(path)
+            else:
+                loaded_image = False
         else:
             response = requests.get(mapped_meta["image"])
             img = Image.open(BytesIO(response.content))
 
-        img.resize((1, 1), resample=0)
-        color = img.getpixel((0, 0))
+        if loaded_image:
+            img.resize((1, 1), resample=PIL.Image.Resampling.HAMMING)
+            color = img.getpixel((0, 0))
 
-        color_light = "#{:x}{:x}{:x}".format(*color)
-        mapped_meta["color_border"] = color_light
+            color_light = "#{:02x}{:02x}{:02x}".format(*color)
+            mapped_meta["color_border"] = color_light
 
-        color_dark = "#{:x}{:x}{:x}".format(*[math.floor(a * 0.85) for a in color])
-        mapped_meta["color"] = color_dark
+            color_dark = "#{:02x}{:02x}{:02x}".format(*[math.floor(a * 0.85) for a in color])
+            mapped_meta["color"] = color_dark
 
-    for key in mapped_meta:
-        if mapped_meta[key] == "":
+    for key in default_metadata:
+        if mapped_meta.get(key, "") == "":
             mapped_meta[key] = default_metadata[key]
 
     metadata_index[player.props.player_name] = mapped_meta
