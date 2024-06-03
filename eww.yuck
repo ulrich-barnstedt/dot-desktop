@@ -6,9 +6,8 @@
     :geometry (geometry :anchor "center")
     :stacking "bg"
     :wm-ignore false
-    :windowtype "desktop"
+    :windowtype "toolbar"
     :class "window"
-    :focusable true
     (main-layout)
 )
 
@@ -17,8 +16,7 @@
     :geometry (geometry :anchor "center left")
     :stacking "bg"
     :wm-ignore false
-    :windowtype "desktop"
+    :windowtype "toolbar"
     :class "window"
-    :focusable true
     (bar-layout)
 )
