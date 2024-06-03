@@ -33,6 +33,13 @@ def send_update():
     collected = []
 
     for player in manager.props.players:
+        metadata = metadata_index.get(player.props.player_name, default_metadata)
+
+        # filter chromium left over empty player
+        if player.props.player_name == "chromium":
+            if metadata["title"] == default_metadata["title"] and metadata["artist"] == default_metadata["artist"]:#
+                continue
+
         collected.append(
             {
                 "name": player.props.player_name,
@@ -41,7 +48,7 @@ def send_update():
                     round(player.props.position / player.props.metadata["mpris:length"], 2) * 100
                     if player.props.metadata["mpris:length"] != 0 else 0
             } |
-            metadata_index.get(player.props.player_name, default_metadata)
+            metadata
         )
 
     print(json.dumps(collected), flush=True)
@@ -94,9 +101,9 @@ def on_metadata(player, metadata, manager):
         loaded_image = True
         if mapped_meta["image"].startswith("file://"):
             path = mapped_meta["image"].replace("file://", "")
-            if os.path.isfile(path):
+            try:
                 img = Image.open(path)
-            else:
+            except:
                 loaded_image = False
         else:
             response = requests.get(mapped_meta["image"])
