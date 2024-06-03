@@ -9,15 +9,23 @@
         :valign "start"
         (box
             :valign "start"
+            :orientation "v"
+            :spacing 30
             (launcher 
                 :picture "/home/ulrich/.config/eww/icons/logout.png" 
                 :command "alacritty -e gnome-session-quit --logout" 
                 :class "launcher-logout"
             )
+            (launcher 
+                :picture "/home/ulrich/.config/eww/icons/standby.png" 
+                :command 'xdg-screensaver lock && systemctl suspend' 
+                :class "launcher-sleep"
+            )
         )
         (box
             :orientation "v"
             :spacing 30
+            :valign "start"
             (launcher 
                 :picture "/home/ulrich/.config/eww/icons/shutdown.png" 
                 :command "alacritty -e gnome-session-quit --power-off" 
@@ -27,11 +35,6 @@
                 :picture "/home/ulrich/.config/eww/icons/restart.png" 
                 :command "alacritty -e gnome-session-quit --reboot" 
                 :class "launcher-restart"
-            )
-            (launcher 
-                :picture "/home/ulrich/.config/eww/icons/standby.png" 
-                :command 'xdg-screensaver lock && systemctl suspend' 
-                :class "launcher-sleep"
             )
         )
     )

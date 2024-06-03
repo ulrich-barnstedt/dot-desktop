@@ -15,11 +15,15 @@ metadata_index = dict()
 default_metadata = {
     "title": "<No title>",
     "artist": "<No artist>",
-    "album": "<No album>",
+    "album": "<Unknown album>",
     "image": "https://placehold.co/256x265",
     "color": "#777777",
-    "color_border": "#999999"
+    "color_border": "#999999",
+    "dark_text": True
 }
+border_threshold = 30
+dark_threshold = 135
+text_limit = 32
 dbus_keys = {"xesam:title", "xesam:artist", "xesam:album", "mpris:artUrl"}
 interval_func_running = False
 
@@ -82,6 +86,10 @@ def on_metadata(player, metadata, manager):
         "image": metadata["mpris:artUrl"]
     }
 
+    for prop in ["title", "album", "artist"]:
+        if len(mapped_meta[prop]) > text_limit:
+            mapped_meta[prop] = mapped_meta[prop][0:text_limit] + "..."
+
     if mapped_meta["image"] != "":
         loaded_image = True
         if mapped_meta["image"].startswith("file://"):
@@ -95,13 +103,23 @@ def on_metadata(player, metadata, manager):
             img = Image.open(BytesIO(response.content))
 
         if loaded_image:
-            img.resize((1, 1), resample=PIL.Image.Resampling.HAMMING)
-            color = img.getpixel((0, 0))
+            img.resize((5, 5), resample=PIL.Image.Resampling.HAMMING)
+            color = img.getpixel((1, 1))
+            if isinstance(color, int):
+                color = (color, color, color)
 
-            color_light = "#{:02x}{:02x}{:02x}".format(*color)
+            if color[0] < border_threshold and color[1] < border_threshold and color[2] < border_threshold:
+                color_light = "#434a57"
+            else:
+                color_light = "#{:02x}{:02x}{:02x}".format(*color)
             mapped_meta["color_border"] = color_light
 
-            color_dark = "#{:02x}{:02x}{:02x}".format(*[math.floor(a * 0.85) for a in color])
+            color_dark = [math.floor(a * 0.80) for a in color]
+            if color_dark[0] > dark_threshold or color_dark[1] > dark_threshold or color_dark[2] > dark_threshold:
+                mapped_meta["dark_text"] = True
+            else:
+                mapped_meta["dark_text"] = False
+            color_dark = "#{:02x}{:02x}{:02x}".format(*color_dark)
             mapped_meta["color"] = color_dark
 
     for key in default_metadata:

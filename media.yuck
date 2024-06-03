@@ -1,7 +1,6 @@
 (deflisten media-info :initial "[]" `python3 scripts/player-service2.py`)
 (defwidget media-list []
     (box
-        :space-evenly false
         :spacing 30
         :orientation "v"
         (for player in media-info 
@@ -9,12 +8,80 @@
                 :class "widget"
                 :style 'background-color: ${player.color}; border: 2px solid ${player.color_border}'
                 :space-evenly false
+                :spacing 25
                 (box
                     :class "image-player"
                     :style 'background-image: url("${player.image}")'
                 )
-                {player.name}
-                {player.is_playing}
+                (box
+                    :orientation "v"
+                    :space-evenly false 
+                    :hexpand true
+                    :spacing 20
+                    (box
+                        :orientation "v"
+                        :space-evenly false
+                        :spacing 5
+                        (label
+                            :halign "start"
+                            :text "${player.album}"
+                            :class {player.dark_text ? "dark-l2" : "light-l2"}
+                        )
+                        (box
+                            :class "min-title"
+                            (label
+                                :halign "start"
+                                :text {player.title}
+                                :class {player.dark_text ? "dark-l1 larger" : "light-l1 larger"}
+                            )
+                        )
+                        (label
+                            :halign "start"
+                            :text {player.artist}
+                            :class {player.dark_text ? "dark-l1" : "light-l1"}
+                        )
+                    )
+                    (box
+                        :halign "center"
+                        :space-evenly false
+                        :spacing 20
+                        (button
+                            (image
+                                :path {player.dark_text ?
+                                    "/home/ulrich/.config/eww/icons/media/skip_back_dark.png" :
+                                    "/home/ulrich/.config/eww/icons/media/skip_back_light.png"
+                                }
+                                :image-height 45
+                                :image-width 45
+                            )
+                        )
+                        (button
+                            (image
+                                :path {player.is_playing ?
+                                    player.dark_text ? "/home/ulrich/.config/eww/icons/media/pause_dark.png" : "/home/ulrich/.config/eww/icons/media/pause_light.png" :
+                                    player.dark_text ? "/home/ulrich/.config/eww/icons/media/play_dark.png" : "/home/ulrich/.config/eww/icons/media/play_light.png"
+                                }
+                                :image-height 45
+                                :image-width 45
+                            )
+                        )
+                        (button
+                            (image
+                                :path {player.dark_text ?
+                                    "/home/ulrich/.config/eww/icons/media/skip_forward_light.png" :
+                                    "/home/ulrich/.config/eww/icons/media/skip_forward_dark.png"
+                                }
+                                :image-height 45
+                                :image-width 45
+                            )
+                        )
+                    )
+                )
+                (label
+                    :angle 270
+                    :text {player.name}
+                    :class {player.dark_text ? "dark-l2 pad-left-sm" : "light-l2 pad-left-sm"}
+                )
             )
         )
     )
