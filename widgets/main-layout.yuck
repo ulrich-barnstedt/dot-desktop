@@ -20,6 +20,7 @@
         :spacing 30
         :orientation "v"
         :class "content"
+        :style "margin-bottom: 250px;"
         (box
             :spacing 30
             :space-evenly false

@@ -110,7 +110,7 @@ def on_metadata(player, metadata, manager):
             img = Image.open(BytesIO(response.content))
 
         if loaded_image:
-            img.resize((5, 5), resample=PIL.Image.Resampling.HAMMING)
+            img = img.resize((3, 3), resample=PIL.Image.Resampling.HAMMING)
             color = img.getpixel((1, 1))
             if isinstance(color, int):
                 color = (color, color, color)

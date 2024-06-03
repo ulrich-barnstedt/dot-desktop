@@ -1,0 +1,8 @@
+(include "./widgets/mediabar/media.yuck")
+
+(defwidget mediabar-layout []
+    (box
+        :class "content"
+        (media-list)
+    )
+)
