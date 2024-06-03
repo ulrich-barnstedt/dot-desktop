@@ -1,0 +1,12 @@
+(include "./widgets/bar/launcher.yuck")
+
+(defwidget update-button []
+    (box
+        :halign "start"
+        (launcher 
+            :picture "/home/ulrich/.config/eww/icons/update.png" 
+            :command "alacritty --hold -e bash -i -c update" 
+            :class "launcher-update"
+        )
+    )
+)

@@ -1,0 +1,31 @@
+(include "./widgets/bar/launcher.yuck")
+
+(defwidget power-buttons []
+    (box
+        :space-evenly false
+        :spacing 30
+        :orientation "v"
+        :halign "start"
+        (launcher 
+            :picture "/home/ulrich/.config/eww/icons/power/shutdown.png" 
+            :command "alacritty -e gnome-session-quit --power-off" 
+            :class "launcher-shutdown"
+        )
+        (launcher 
+            :picture "/home/ulrich/.config/eww/icons/power/standby.png" 
+            :command 'xdg-screensaver lock && systemctl suspend' 
+            :class "launcher-sleep"
+        )
+        (launcher 
+            :picture "/home/ulrich/.config/eww/icons/power/restart.png" 
+            :command "alacritty -e gnome-session-quit --reboot" 
+            :class "launcher-restart"
+        )
+        (launcher 
+            :picture "/home/ulrich/.config/eww/icons/power/logout.png" 
+            :command "alacritty -e gnome-session-quit --logout" 
+            :class "launcher-logout"
+        )
+    )
+)
+

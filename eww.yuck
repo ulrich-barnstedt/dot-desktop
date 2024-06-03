@@ -1,20 +1,5 @@
-(include "./top.yuck")
-(include "./bottom.yuck")
-
-(defwidget content []
-    (box
-        :spacing 30 
-        :space-evenly false
-        :class "content"
-        :orientation "v"
-        (top)
-        (revealer
-            :transition "slidedown"
-            :reveal all-expanded
-            (bottom)
-        )
-    )
-)
+(include "./widgets/main-layout.yuck")
+(include "./widgets/bar-layout.yuck")
 
 (defwindow main
     :monitor 1
@@ -24,5 +9,16 @@
     :windowtype "desktop"
     :class "window"
     :focusable true
-    (content)
+    (main-layout)
+)
+
+(defwindow bar
+    :monitor 1
+    :geometry (geometry :anchor "center left")
+    :stacking "bg"
+    :wm-ignore false
+    :windowtype "desktop"
+    :class "window"
+    :focusable true
+    (bar-layout)
 )

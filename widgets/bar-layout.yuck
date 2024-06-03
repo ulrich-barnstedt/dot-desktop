@@ -1,0 +1,15 @@
+(include "./widgets/bar/apps.yuck")
+(include "./widgets/bar/other.yuck")
+(include "./widgets/bar/power.yuck")
+
+(defwidget bar-layout []
+    (box
+        :orientation "v"
+        :spacing 30
+        :space-evenly false
+        :class "pad-left"
+        (power-buttons)
+        (update-button)
+        (app-launchers)
+    )
+)

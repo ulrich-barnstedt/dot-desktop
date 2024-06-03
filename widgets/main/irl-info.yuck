@@ -1,0 +1,64 @@
+(include "./widgets/main/weather-info.yuck")
+
+(defpoll date :interval "5s" :initial '{"day": "Monday", "hour": "16", "minute": "41", "date": "03. June"}' `date +'{"day": "%A", "hour": "%02H", "minute": "%2M", "date": "%d. %B"}'`)
+(defwidget clock []
+    (box
+        :class "widget-dark"
+        ; :halign "start"
+        :space-evenly false
+        :orientation "v"
+        :spacing 10
+        (box
+            :halign "center"
+            :spacing 5
+            (label
+                :valign "start"
+                :class "thick largest"
+                :text {date.hour}
+            )
+            (label
+                :valign "start"
+                :class "thick pad-top-sm largest light-l2"
+                :text {date.minute}
+            )
+        )
+        (label
+            :text "${date.day}, ${date.date}"
+            :class "blue"
+        )
+    )
+)
+
+(defwidget weather []
+    (box
+        :class "widget-dark"
+        :valign "end"
+        :orientation "v"
+        :space-evenly false
+        (label
+            :text {weather-codes[weather-info["current"]["weather_code"]][weather-info["current"]["is_day"] == 0 ? "night" : "day"]}
+            :halign "center"
+            :class {weather-info["current"]["is_day"] == 1 ? "yellow larger pad-bottom-sm" : "blue larger pad-bottom-sm"}
+        )
+        (box
+            :space-evenly false
+            :spacing 30
+            (image
+                :path {
+                    weather-info["current"]["is_day"] == 1 ? 
+                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/weather/day_cloudy.png" : "/home/ulrich/.config/eww/icons/weather/day.png" :
+                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/weather/night_cloudy.png" : "/home/ulrich/.config/eww/icons/weather/night.png" 
+                }
+                :image-height 64
+                :image-width 64
+            )
+            (box
+                :space-evenly false
+                :orientation "v"
+                :valign "center"
+                '${weather-info["current"]["temperature_2m"]} °C'
+                '${weather-info["current"]["wind_speed_10m"]} km/h'
+            )
+        )
+    )
+)

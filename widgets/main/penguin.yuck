@@ -1,0 +1,13 @@
+(defvar all-expanded true)
+(defwidget penguin []
+    (button
+        :class "widget-light"
+        :valign "end"
+        :style {all-expanded ? "" : "opacity: 0.5"}
+        :onclick {all-expanded ? "/home/ulrich/Software/eww/target/release/eww update all-expanded=false" : "/home/ulrich/Software/eww/target/release/eww update all-expanded=true"} 
+        (image
+            :path "/home/ulrich/.config/eww/images/tux.png"
+            :image-height 80
+        )
+    )
+)

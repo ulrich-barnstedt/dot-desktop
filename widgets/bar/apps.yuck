@@ -1,0 +1,30 @@
+(include "./widgets/bar/launcher.yuck")
+
+(defwidget app-launchers []
+    (box
+        :spacing 30
+        :space-evenly false
+        :valign "start"
+        :halign "start"
+        ; :orientation "v"
+        (box
+            :space-evenly false
+            :class "launcher-combined"
+            (launcher
+                :picture "/home/ulrich/.config/eww/icons/applications/alacritty.png"
+                :class "launcher-alacritty"
+                :command "alacritty"
+            )
+            (launcher
+                :class "launcher-folder"
+                :picture "/home/ulrich/.config/eww/icons/applications/project_folder.png"
+                :command "alacritty --working-directory /home/ulrich/Programming/Projects"
+            )
+        )
+        ; (launcher
+        ;     :class "launcher-discord"
+        ;     :picture "/home/ulrich/.config/eww/icons/applications/discord.png"
+        ;     :command "discord"
+        ; )
+    )
+)

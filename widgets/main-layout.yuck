@@ -1,0 +1,33 @@
+(include "./widgets/main/irl-info.yuck")
+(include "./widgets/main/system-info.yuck")
+(include "./widgets/main/profile.yuck")
+(include "./widgets/main/media.yuck")
+
+(defwidget clock-weather []
+    (box
+        :space-evenly false
+        :orientation "v"
+        :spacing 30
+        :valign "end"
+        (clock)
+        (weather)
+    )
+)
+
+(defwidget main-layout []
+    (box
+        :space-evenly false
+        :spacing 30
+        :orientation "v"
+        (box
+            :spacing 30
+            :space-evenly false
+            :valign "end"
+            (clock-weather)
+            (system-info)
+            (stats)
+            (profile)
+        )
+        (media-list)
+    )
+)

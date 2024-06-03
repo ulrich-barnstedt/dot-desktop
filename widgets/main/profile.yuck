@@ -1,0 +1,33 @@
+(defwidget profile []
+    (box
+        :class "widget-dark"
+        :valign "end"
+        :space-evenly false
+        (box
+            :valign "start"
+            (label
+                :text "Ulrich Barnstedt"
+                :angle 90
+                :style "margin-right: -15px"
+            )
+        )
+        (box 
+            :orientation "v"
+            :space-evenly false
+            (image 
+                :path "/home/ulrich/.config/eww/images/cropped.png"
+                :image-height 180
+            )
+            (box
+                :space-evenly false
+                :halign "center"
+                :orientation "v"
+                :spacing 5
+                :class "pad-top"
+                (label :text "@0x81" :class "blue")
+                (label :text "gh:ulrich-barnstedt" :class "blue")
+                ; (label :text "Ulrich Barnstedt")
+            )
+        )
+    )
+)
