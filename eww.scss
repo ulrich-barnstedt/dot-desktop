@@ -78,6 +78,11 @@ $fg: #ffffff;
     padding-left: 15px;
 }
 
+.no-pad {
+    padding: 0px;
+    margin: 0px;
+}
+
 .pad-xl {
     padding: 50px;
 }
@@ -86,6 +91,13 @@ $fg: #ffffff;
     font-size: larger;
 }
 
+.largest {
+    font-size: xx-large;
+}
+
+.thick {
+    font-weight: 800;
+}
 
 .min-title {
     min-width: 200px;
@@ -163,6 +175,27 @@ $fg: #ffffff;
     @include launcher-color(gray);
 }
 
+.launcher-alacritty {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 15px;
+    background-color: #e57228;
+}
+.launcher-folder {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 15px;
+    background-color: $bg;
+}
+.launcher-combined {
+    border-radius: 20px;
+    box-shadow: 0 0 15px 5px #111111;
+    border: 2px solid lighten(gray, 10%);
+    background-color: lighten(gray, 10%);
+}
+.launcher-discord {
+    @include launcher-color(#5865F2);
+}
 
 // ---------------------------------------- 
 

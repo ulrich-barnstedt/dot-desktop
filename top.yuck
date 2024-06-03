@@ -265,8 +265,8 @@
             (image
                 :path {
                     weather-info["current"]["is_day"] == 1 ? 
-                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/day_cloudy.png" : "/home/ulrich/.config/eww/icons/day.png" :
-                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/night_cloudy.png" : "/home/ulrich/.config/eww/icons/night.png" 
+                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/weather/day_cloudy.png" : "/home/ulrich/.config/eww/icons/weather/day.png" :
+                    weather-info["current"]["cloud_cover"] >= 32 ? "/home/ulrich/.config/eww/icons/weather/night_cloudy.png" : "/home/ulrich/.config/eww/icons/weather/night.png" 
                 }
                 :image-height 64
                 :image-width 64

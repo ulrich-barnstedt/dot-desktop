@@ -12,12 +12,12 @@
             :orientation "v"
             :spacing 30
             (launcher 
-                :picture "/home/ulrich/.config/eww/icons/logout.png" 
+                :picture "/home/ulrich/.config/eww/icons/power/logout.png" 
                 :command "alacritty -e gnome-session-quit --logout" 
                 :class "launcher-logout"
             )
             (launcher 
-                :picture "/home/ulrich/.config/eww/icons/standby.png" 
+                :picture "/home/ulrich/.config/eww/icons/power/standby.png" 
                 :command 'xdg-screensaver lock && systemctl suspend' 
                 :class "launcher-sleep"
             )
@@ -27,15 +27,73 @@
             :spacing 30
             :valign "start"
             (launcher 
-                :picture "/home/ulrich/.config/eww/icons/shutdown.png" 
+                :picture "/home/ulrich/.config/eww/icons/power/shutdown.png" 
                 :command "alacritty -e gnome-session-quit --power-off" 
                 :class "launcher-shutdown"
             )
             (launcher 
-                :picture "/home/ulrich/.config/eww/icons/restart.png" 
+                :picture "/home/ulrich/.config/eww/icons/power/restart.png" 
                 :command "alacritty -e gnome-session-quit --reboot" 
                 :class "launcher-restart"
             )
+        )
+    )
+)
+
+(defwidget app-launchers []
+    (box
+        :spacing 30
+        :space-evenly false
+        :valign "start"
+        :halign "start"
+        ; :orientation "v"
+        (box
+            :space-evenly false
+            :class "launcher-combined"
+            (launcher
+                :picture "/home/ulrich/.config/eww/icons/applications/alacritty.png"
+                :class "launcher-alacritty"
+                :command "alacritty"
+            )
+            (launcher
+                :class "launcher-folder"
+                :picture "/home/ulrich/.config/eww/icons/applications/project_folder.png"
+                :command "alacritty --working-directory /home/ulrich/Programming/Projects"
+            )
+        )
+        ; (launcher
+        ;     :class "launcher-discord"
+        ;     :picture "/home/ulrich/.config/eww/icons/applications/discord.png"
+        ;     :command "discord"
+        ; )
+    )
+)
+
+(defpoll date :interval "5s" :initial '{"day": "Monday", "hour": "16", "minute": "41", "date": "03. June"}' `date +'{"day": "%A", "hour": "%02H", "minute": "%2M", "date": "%d. %B"}'`)
+(defwidget clock []
+    (box
+        :class "widget-dark"
+        :halign "start"
+        :space-evenly false
+        :orientation "v"
+        :spacing 10
+        (box
+            :halign "center"
+            :spacing 5
+            (label
+                :valign "start"
+                :class "thick largest"
+                :text {date.hour}
+            )
+            (label
+                :valign "start"
+                :class "thick pad-top-sm largest light-l2"
+                :text {date.minute}
+            )
+        )
+        (label
+            :text "${date.day}, ${date.date}"
+            :class "blue"
         )
     )
 )
@@ -47,5 +105,12 @@
         :spacing 30 
         (powermenu)
         (media-list)
+        (box
+            :orientation "v"
+            :spacing 30
+            :space-evenly false
+            (clock)
+        )
+        (app-launchers)
     )
 )

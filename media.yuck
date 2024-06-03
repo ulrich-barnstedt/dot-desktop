@@ -96,6 +96,7 @@
     (box
         :spacing 30
         :orientation "v"
+        :valign "start"
         (for player in media-info 
             (box
                 :class "widget"
