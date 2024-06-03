@@ -198,3 +198,34 @@ $fg: #ffffff;
 .temp_bar scale trough highlight {
 	background-color: $red;
 }
+
+
+// ---------------------------------------- 
+
+.song-bar-light scale trough {
+	all: unset;
+	background-color: $bg_light;
+	border-radius: 5px;
+	min-height: 5px;
+	min-width: 240px;
+}
+
+.song-bar-light scale trough highlight {
+	all: unset;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.song-bar-dark scale trough {
+	all: unset;
+	background-color: $fg_dark;
+	border-radius: 5px;
+	min-height: 5px;
+	min-width: 240px;
+}
+
+.song-bar-dark scale trough highlight {
+	all: unset;
+	border-radius: 5px;
+	background-color: black;
+}
