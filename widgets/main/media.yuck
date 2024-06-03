@@ -95,7 +95,7 @@
 (defwidget media-list []
     (box
         :spacing 30
-        :orientation "v"
+        :orientation "h"
         :valign "start"
         :halign "center"
         :space-evenly false

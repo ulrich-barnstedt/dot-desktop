@@ -5,7 +5,6 @@
         :space-evenly false
         :spacing 30
         :orientation "v"
-        :halign "start"
         (launcher 
             :picture "/home/ulrich/.config/eww/icons/power/shutdown.png" 
             :command "alacritty -e gnome-session-quit --power-off" 

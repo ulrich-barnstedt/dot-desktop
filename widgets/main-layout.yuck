@@ -1,7 +1,7 @@
 (include "./widgets/main/irl-info.yuck")
 (include "./widgets/main/system-info.yuck")
 (include "./widgets/main/profile.yuck")
-(include "./widgets/main/media.yuck")
+(include "./widgets/main/termbar.yuck")
 
 (defwidget clock-weather []
     (box
@@ -19,6 +19,7 @@
         :space-evenly false
         :spacing 30
         :orientation "v"
+        :class "content"
         (box
             :spacing 30
             :space-evenly false
@@ -28,6 +29,6 @@
             (stats)
             (profile)
         )
-        (media-list)
+        (termbar)
     )
 )

@@ -2,21 +2,19 @@
 (include "./widgets/bar-layout.yuck")
 
 (defwindow main
-    :monitor "<primary>"
+    :monitor 1
     :geometry (geometry :anchor "center")
     :stacking "bg"
     :wm-ignore false
     :windowtype "toolbar"
-    :class "window"
     (main-layout)
 )
 
 (defwindow bar
-    :monitor "<primary>"
+    :monitor 1
     :geometry (geometry :anchor "center left")
     :stacking "bg"
     :wm-ignore false
     :windowtype "toolbar"
-    :class "window"
     (bar-layout)
 )

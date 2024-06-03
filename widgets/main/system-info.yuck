@@ -15,7 +15,7 @@
             :reveal sysinfo-expanded
             (label
                 :text os-version
-                :class "red pad-bottom larger"
+                :class "red pad-bottom larger thick"
             )
         )
         (button

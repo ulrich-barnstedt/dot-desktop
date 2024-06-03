@@ -4,7 +4,6 @@
     (box
         :spacing 30
         :space-evenly false
-        :halign "start"
         :orientation "v"
         (box
             :space-evenly false

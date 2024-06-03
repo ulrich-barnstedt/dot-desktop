@@ -4,7 +4,6 @@
 (defwidget clock []
     (box
         :class "widget-dark"
-        ; :halign "start"
         :space-evenly false
         :orientation "v"
         :spacing 10
@@ -24,7 +23,7 @@
         )
         (label
             :text "${date.day}, ${date.date}"
-            :class "blue"
+            :class "blue thick"
         )
     )
 )
@@ -38,7 +37,7 @@
         (label
             :text {weather-codes[weather-info["current"]["weather_code"]][weather-info["current"]["is_day"] == 0 ? "night" : "day"]}
             :halign "center"
-            :class {weather-info["current"]["is_day"] == 1 ? "yellow larger pad-bottom-sm" : "blue larger pad-bottom-sm"}
+            :class {weather-info["current"]["is_day"] == 1 ? "yellow larger pad-bottom-sm thick" : "blue larger pad-bottom-sm thick"}
         )
         (box
             :space-evenly false

@@ -48,6 +48,21 @@ $fg: #ffffff;
     min-width: 160px;
 }
 
+.termbar {
+    border-radius: 20px;
+    padding: 10px 25px;
+    box-shadow: 0 0 20px 10px #111111;
+    background-color: black;
+    border: 2px solid $bg_light;
+}
+
+.input-box {
+    min-width: 500px;
+    border-radius: 2px;
+    padding: 2px;
+    color: $green;
+}
+
 // ----------------------------------------
 
 .pad-top {

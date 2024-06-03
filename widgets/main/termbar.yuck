@@ -1,0 +1,20 @@
+
+(defvar termbar-value "")
+(defwidget termbar []
+    (box
+        :class "termbar"
+        :space-evenly false
+        :spacing 10
+        :halign "center"
+        
+        (label
+            :text ">>"
+            :class "light-l2 thick"
+        )
+        (input
+            :class "input-box"
+            :value termbar-value
+            :onaccept `eww update termbar-value="" && alacritty -e bash -i -c "echo '>> {}'; {}; exec bash"`
+        )
+    )
+)
