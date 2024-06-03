@@ -4,12 +4,12 @@
     (box
         :spacing 30
         :space-evenly false
-        :valign "start"
         :halign "start"
-        ; :orientation "v"
+        :orientation "v"
         (box
             :space-evenly false
             :class "launcher-combined"
+            :orientation "v"
             (launcher
                 :picture "/home/ulrich/.config/eww/icons/applications/alacritty.png"
                 :class "launcher-alacritty"
@@ -21,10 +21,10 @@
                 :command "alacritty --working-directory /home/ulrich/Programming/Projects"
             )
         )
-        ; (launcher
-        ;     :class "launcher-discord"
-        ;     :picture "/home/ulrich/.config/eww/icons/applications/discord.png"
-        ;     :command "discord"
-        ; )
+        (launcher
+            :class "launcher-discord"
+            :picture "/home/ulrich/.config/eww/icons/applications/discord.png"
+            :command "discord"
+        )
     )
 )

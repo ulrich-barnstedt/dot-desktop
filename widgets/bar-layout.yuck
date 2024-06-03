@@ -7,7 +7,7 @@
         :orientation "v"
         :spacing 30
         :space-evenly false
-        :class "pad-left"
+        :class "pad-left pad-top"
         (power-buttons)
         (update-button)
         (app-launchers)

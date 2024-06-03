@@ -3,8 +3,8 @@
         :onclick command
         (image
             :class class
-            :image-height 64
-            :image-width 64
+            :image-height 48
+            :image-width 48
             :path picture
         )
     )

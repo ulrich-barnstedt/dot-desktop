@@ -176,12 +176,12 @@ $fg: #ffffff;
 
 .launcher-alacritty {
     border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
     padding: 15px;
     background-color: #e57228;
 }
 .launcher-folder {
-    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 15px;
     background-color: $bg;

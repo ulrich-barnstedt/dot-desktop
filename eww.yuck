@@ -2,7 +2,7 @@
 (include "./widgets/bar-layout.yuck")
 
 (defwindow main
-    :monitor 1
+    :monitor "<primary>"
     :geometry (geometry :anchor "center")
     :stacking "bg"
     :wm-ignore false
@@ -13,7 +13,7 @@
 )
 
 (defwindow bar
-    :monitor 1
+    :monitor "<primary>"
     :geometry (geometry :anchor "center left")
     :stacking "bg"
     :wm-ignore false
