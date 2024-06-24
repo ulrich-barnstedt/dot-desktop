@@ -87,10 +87,10 @@ def on_metadata(player, metadata, manager):
         return
 
     mapped_meta = {
-        "title": metadata["xesam:title"],
-        "artist": ", ".join(metadata["xesam:artist"]),
+        "title": metadata["xesam:title"].replace("\\", "\\\\"),
+        "artist": ", ".join(metadata["xesam:artist"]).replace("\\", "\\\\"),
         "album": metadata["xesam:album"],
-        "image": metadata["mpris:artUrl"]
+        "image": metadata["mpris:artUrl"].replace("\\", "\\\\")
     }
 
     for prop in ["title", "album", "artist"]:

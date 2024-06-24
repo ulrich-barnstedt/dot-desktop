@@ -10,8 +10,8 @@
         :space-evenly false
         :halign "center"
         (power-buttons)
-        (update-button)
         (termbar)
+        (update-button)
         (app-launchers)
     )
 )
