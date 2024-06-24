@@ -45,7 +45,7 @@ def send_update():
                 "name": player.props.player_name,
                 "is_playing": player.props.playback_status.value_nick == "Playing",
                 "position":
-                    round(player.props.position / player.props.metadata["mpris:length"], 2) * 100
+                    round(player.props.position / int(player.props.metadata["mpris:length"]), 2) * 100
                     if player.props.metadata["mpris:length"] != 0 else 0
             } |
             metadata

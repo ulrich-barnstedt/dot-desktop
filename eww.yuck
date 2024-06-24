@@ -3,7 +3,7 @@
 (include "./widgets/mediabar-layout.yuck")
 
 (defwindow main
-    :monitor "<primary>"
+    :monitor 1
     :geometry (geometry :anchor "center")
     :stacking "bg"
     :wm-ignore false
@@ -12,7 +12,7 @@
 )
 
 (defwindow bar
-    :monitor "<primary>"
+    :monitor 1
     :geometry (geometry :anchor "center left")
     :stacking "bg"
     :wm-ignore false
@@ -21,7 +21,7 @@
 )
 
 (defwindow mediabar
-    :monitor "<primary>"
+    :monitor 1
     :geometry (geometry :anchor "center bottom")
     :stacking "bg"
     :wm-ignore false

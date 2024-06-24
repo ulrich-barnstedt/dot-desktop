@@ -102,7 +102,7 @@
         (for player in media-info 
             (box
                 :class "widget"
-                :style 'background-color: ${player.color}; border: 2px solid ${player.color_border}'
+                :style 'background-color: ${player.color}; border: 2px solid ${player.color_border};'
                 :space-evenly false
                 :spacing 25
                 (player-image :player player)

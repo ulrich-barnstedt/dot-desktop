@@ -9,6 +9,7 @@ $cyan: #56b6c2;
 $fg_dark: #abb2bf;
 $fg: #ffffff;
 
+
 * { all: unset; }
 * {   
     font-family: "JetBrains Mono Nerd Font", monospace;
@@ -25,12 +26,12 @@ $fg: #ffffff;
 .widget {
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 0 15px 5px #111111;
+    // box-shadow: 0 0 15px 5px #111111;
 }
 
 .widget-dark {
     @extend .widget;
-    background-color: $bg;
+    background-color: rgba(#1d1c1c, .8);
     border: 2px solid $bg_light;
 }
 
