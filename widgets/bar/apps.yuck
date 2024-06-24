@@ -2,7 +2,7 @@
 
 (defwidget app-launchers []
     (box
-        :spacing 30
+        :spacing 15
         :space-evenly false
         :orientation "v"
         (box

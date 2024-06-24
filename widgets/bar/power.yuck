@@ -3,7 +3,7 @@
 (defwidget power-buttons []
     (box
         :space-evenly false
-        :spacing 30
+        :spacing 15
         :orientation "v"
         (launcher 
             :picture "/home/ulrich/.config/eww/icons/power/shutdown.png" 

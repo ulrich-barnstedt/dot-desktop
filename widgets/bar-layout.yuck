@@ -5,9 +5,9 @@
 (defwidget bar-layout []
     (box
         :orientation "v"
-        :spacing 30
+        :spacing 15
         :space-evenly false
-        :class "pad-top content"
+        :class "pad-top pad-left-sm"
         (power-buttons)
         (update-button)
         (app-launchers)

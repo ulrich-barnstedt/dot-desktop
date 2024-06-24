@@ -126,7 +126,7 @@ def on_metadata(player, metadata, manager):
                 mapped_meta["dark_text"] = True
             else:
                 mapped_meta["dark_text"] = False
-            color_dark = "#{:02x}{:02x}{:02x}".format(*color_dark)
+            color_dark = "rgba({}, {}, {}, 0.92)".format(*color_dark)
             mapped_meta["color"] = color_dark
 
     for key in default_metadata:
