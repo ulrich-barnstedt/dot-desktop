@@ -1,9 +1,8 @@
 (include "./widgets/main-layout.yuck")
-(include "./widgets/bar-layout.yuck")
 (include "./widgets/mediabar-layout.yuck")
 
 (defwindow main
-    :monitor 1
+    :monitor "<primary>"
     :geometry (geometry :anchor "center")
     :stacking "bg"
     :wm-ignore false
@@ -11,17 +10,8 @@
     (main-layout)
 )
 
-(defwindow bar
-    :monitor 1
-    :geometry (geometry :anchor "center left")
-    :stacking "bg"
-    :wm-ignore false
-    :windowtype "toolbar"
-    (bar-layout)
-)
-
 (defwindow mediabar
-    :monitor 1
+    :monitor "<primary>"
     :geometry (geometry :anchor "center bottom")
     :stacking "bg"
     :wm-ignore false

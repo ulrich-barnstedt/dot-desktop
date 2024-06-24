@@ -1,15 +1,17 @@
 (include "./widgets/bar/apps.yuck")
 (include "./widgets/bar/other.yuck")
 (include "./widgets/bar/power.yuck")
+(include "./widgets/bar/termbar.yuck")
 
 (defwidget bar-layout []
     (box
-        :orientation "v"
+        :orientation "h"
         :spacing 15
         :space-evenly false
-        :class "pad-top pad-left-sm"
+        :halign "center"
         (power-buttons)
         (update-button)
+        (termbar)
         (app-launchers)
     )
 )

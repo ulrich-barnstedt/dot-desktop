@@ -4,18 +4,18 @@
     (box
         :spacing 15
         :space-evenly false
-        :orientation "v"
+        :orientation "h"
         (box
             :space-evenly false
             :class "launcher-combined"
-            :orientation "v"
+            :orientation "h"
             (launcher
                 :picture "/home/ulrich/.config/eww/icons/applications/alacritty.png"
-                :class "launcher-alacritty"
+                :class "launcher-combined-left"
                 :command "alacritty"
             )
             (launcher
-                :class "launcher-folder"
+                :class "launcher-combined-right"
                 :picture "/home/ulrich/.config/eww/icons/applications/project_folder.png"
                 :command "alacritty --working-directory /home/ulrich/Programming/Projects"
             )

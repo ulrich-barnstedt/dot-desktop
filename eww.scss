@@ -52,7 +52,7 @@ $cyan: #56b6c2;
 }
 
 .termbar {
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 10px 25px;
     background-color: rgba(#000000, 0.85);
     border: 2px solid $bg_light;
@@ -164,7 +164,7 @@ $cyan: #56b6c2;
 // ----------------------------------------
 
 .launcher {
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 10px;
 }
 
@@ -189,21 +189,14 @@ $cyan: #56b6c2;
 .launcher-update {
     @include launcher-color(#808080);
 }
-
-.launcher-alacritty {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 10px;
-}
-.launcher-folder {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 10px;
-}
 .launcher-combined {
-    border-radius: 10px;
-    border: 2px solid #c65a18;
-    background-color: $tb;
+    @include launcher-color(#c65a18);
+}
+.launcher-combined-right {
+    padding-left: 10px;
+}
+.launcher-combined-left {
+    padding-right: 10px;
 }
 .launcher-discord {
     @include launcher-color(#5865F2);
